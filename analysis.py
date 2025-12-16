@@ -2,5 +2,8 @@ import pandas as pd
 
 df = pd.read_csv("employees.csv")
 
-print(df.head())
-print(df.shape)
+# df.head() - returns first 5 rows
+# df.shape -  returns (rows, columns)
+
+print(df.info())
+print(df.describe())
