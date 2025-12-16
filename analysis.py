@@ -32,8 +32,10 @@ df = pd.read_csv("employees.csv")
 # sorted_joining_date = df.sort_values("joining_date", ascending=True) - creating sorting object
 # print(sorted_joining_date[["name", "joining_date"]])
 
-avg_salary = df.groupby("department")["salary"].mean()
-count_by_city = df.groupby("city")["id"].count()
+# avg_salary = df.groupby("department")["salary"].mean() - creating grouping object applying to mean of salary
+# count_by_city = df.groupby("city")["id"].count() - creating grouping object and applying it to count of id
 
-print(avg_salary)
-print(count_by_city)
+df["joining_date"] = pd.to_datetime(df["joining_date"])
+df["joining_year"] = df["joining_date"].dt.year
+
+print(df[["name", "joining_year"]])
