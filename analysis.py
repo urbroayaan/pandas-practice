@@ -11,10 +11,10 @@ df = pd.read_csv("employees.csv")
 # names = df["name"] - selecting singular column
 # subset = df[["name", "department", "salary"]] - selecting multiple columns by passing list
 
-high_salary = df[df["salary"] > 90000]
-it_emp = df[df["department"] == "IT"]
-it_high_paid = df[(df["department"] == "IT") & (df["salary"] > 90000)]
+# high_salary = df[df["salary"] > 90000] - single condition
+# it_emp = df[df["department"] == "IT"] - single condition
+# it_high_paid = df[(df["department"] == "IT") & (df["salary"] > 90000)] - multiple condition
 
-print(high_salary,"\n")
-print(it_high_paid, "\n")
-print(it_emp, "\n")
+print(df.isnull().sum())
+df["age"] = df["age"].fillna(df["age"].mean())
+print(df.isnull().sum())
