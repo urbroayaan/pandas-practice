@@ -2,40 +2,53 @@ import pandas as pd
 
 df = pd.read_csv("employees.csv")
 
-# df.head() - returns first 5 rows
-# df.shape -  returns (rows, columns)
+# Preview the dataset to understand structure before making changes
+# df.head()
 
-# df.info() - describes all table header info with datatypes, memory allocation per head and total memory usage
-# df.describe() - provides statistical analysis of the table data
+# Check dataset size (rows, columns) before updates
+# df.shape
 
-# names = df["name"] - selecting singular column
-# subset = df[["name", "department", "salary"]] - selecting multiple columns by passing list
+# Review column names, data types, and memory usage
+# df.info()
 
-# high_salary = df[df["salary"] > 90000] - single condition
-# it_emp = df[df["department"] == "IT"] - single condition
-# it_high_paid = df[(df["department"] == "IT") & (df["salary"] > 90000)] - multiple condition
+# Generate statistical summary for numeric columns
+# df.describe()
 
-# df.isnull() - boolean table representation of all NULL items
-# df.isnull().sum() - summed table showing number of NULL items
-# df["age"] = df["age"].fillna(df["age"].mean()) - replaces NaN values within a column or table to specified value
+# Select required columns for analysis
+# subset = df[["name", "department", "salary"]]
 
-# df["bonus"] = df["salary"] * 0.10
-# df["tax"] = df["salary"] * 0.05                       creating new columns
-# df["salary_after_tax"] = df["salary"] - df["tax"] : 
+# Filter employees with salary greater than 90,000
+# high_salary = df[df["salary"] > 90000]
 
-# sorted_by_salary = df.sort_values("salary", ascending=False) - creating sorting object
-# print(sorted_by_salary[["name", "salary"]])
+# Filter employees belonging to IT department
+# it_emp = df[df["department"] == "IT"]
 
-# sorted_by_age = df.sort_values("age", ascending=False) - creating sorting object
-# print(sorted_by_age[["name", "age"]])
+# Filter IT employees earning more than 90,000
+# it_high_paid = df[(df["department"] == "IT") & (df["salary"] > 90000)]
 
-# sorted_joining_date = df.sort_values("joining_date", ascending=True) - creating sorting object
-# print(sorted_joining_date[["name", "joining_date"]])
+# Identify missing values in the dataset
+# df.isnull()
 
-# avg_salary = df.groupby("department")["salary"].mean() - creating grouping object applying to mean of salary
-# count_by_city = df.groupby("city")["id"].count() - creating grouping object and applying it to count of id
+# Count missing values per column
+# df.isnull().sum()
 
+# Fill missing age values with average age (data cleaned before saving)
+df["age"] = df["age"].fillna(df["age"].mean())
+
+# Add bonus column calculated from salary
+df["bonus"] = df["salary"] * 0.10
+
+# Add tax column calculated from salary
+df["tax"] = df["salary"] * 0.05
+
+# Add final salary after tax deduction
+df["salary_after_tax"] = df["salary"] - df["tax"]
+
+# Convert joining_date from string to datetime for consistency
 df["joining_date"] = pd.to_datetime(df["joining_date"])
+
+# Extract joining year for easier time-based analysis
 df["joining_year"] = df["joining_date"].dt.year
 
-print(df[["name", "joining_year"]])
+# Save cleaned and updated dataset to a new CSV file
+df.to_csv("updated_employees.csv", index=False)
