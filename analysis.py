@@ -19,8 +19,15 @@ df = pd.read_csv("employees.csv")
 # df.isnull().sum() - summed table showing number of NULL items
 # df["age"] = df["age"].fillna(df["age"].mean()) - replaces NaN values within a column or table to specified value
 
-df["bonus"] = df["salary"] * 0.10
-df["tax"] = df["salary"] * 0.05
-df["salary_after_tax"] = df["salary"] - df["tax"]
+# df["bonus"] = df["salary"] * 0.10
+# df["tax"] = df["salary"] * 0.05                       creating new columns
+# df["salary_after_tax"] = df["salary"] - df["tax"] : 
 
-print(df.head())
+sorted_by_salary = df.sort_values("salary", ascending=False)
+print(sorted_by_salary[["name", "salary"]])
+
+sorted_by_age = df.sort_values("age", ascending=False)
+print(sorted_by_age[["name", "age"]])
+
+sorted_joining_date = df.sort_values("joining_date", ascending=True)
+print(sorted_joining_date[["name", "joining_date"]])
