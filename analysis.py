@@ -23,11 +23,17 @@ df = pd.read_csv("employees.csv")
 # df["tax"] = df["salary"] * 0.05                       creating new columns
 # df["salary_after_tax"] = df["salary"] - df["tax"] : 
 
-sorted_by_salary = df.sort_values("salary", ascending=False)
-print(sorted_by_salary[["name", "salary"]])
+# sorted_by_salary = df.sort_values("salary", ascending=False) - creating sorting object
+# print(sorted_by_salary[["name", "salary"]])
 
-sorted_by_age = df.sort_values("age", ascending=False)
-print(sorted_by_age[["name", "age"]])
+# sorted_by_age = df.sort_values("age", ascending=False) - creating sorting object
+# print(sorted_by_age[["name", "age"]])
 
-sorted_joining_date = df.sort_values("joining_date", ascending=True)
-print(sorted_joining_date[["name", "joining_date"]])
+# sorted_joining_date = df.sort_values("joining_date", ascending=True) - creating sorting object
+# print(sorted_joining_date[["name", "joining_date"]])
+
+avg_salary = df.groupby("department")["salary"].mean()
+count_by_city = df.groupby("city")["id"].count()
+
+print(avg_salary)
+print(count_by_city)
