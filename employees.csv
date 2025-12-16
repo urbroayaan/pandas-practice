@@ -1,0 +1,11 @@
+id,name,age,department,city,salary,joining_date
+1,Alice,24,HR,New York,70000,2021-06-15
+2,Bob,30,IT,Los Angeles,80000,2020-09-10
+3,Charlie,35,IT,Chicago,120000,2019-03-22
+4,David,40,Finance,Houston,110000,2018-11-05
+5,Edward,,HR,Phoenix,95000,2022-01-12
+6,Fiona,28,Marketing,New York,65000,2021-08-19
+7,George,45,Finance,Chicago,130000,2017-05-30
+8,Hannah,32,Marketing,Los Angeles,72000,2020-02-14
+9,Ian,29,IT,New York,78000,2022-07-01
+10,Jane,38,HR,Houston,105000,2019-12-09
