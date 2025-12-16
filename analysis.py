@@ -15,6 +15,12 @@ df = pd.read_csv("employees.csv")
 # it_emp = df[df["department"] == "IT"] - single condition
 # it_high_paid = df[(df["department"] == "IT") & (df["salary"] > 90000)] - multiple condition
 
-print(df.isnull().sum())
-df["age"] = df["age"].fillna(df["age"].mean())
-print(df.isnull().sum())
+# df.isnull() - boolean table representation of all NULL items
+# df.isnull().sum() - summed table showing number of NULL items
+# df["age"] = df["age"].fillna(df["age"].mean()) - replaces NaN values within a column or table to specified value
+
+df["bonus"] = df["salary"] * 0.10
+df["tax"] = df["salary"] * 0.05
+df["salary_after_tax"] = df["salary"] - df["tax"]
+
+print(df.head())
